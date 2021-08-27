@@ -5,7 +5,7 @@
 -- Dumped from database version 13.4
 -- Dumped by pg_dump version 13.3
 
--- Started on 2021-08-26 17:36:26
+-- Started on 2021-08-27 16:20:38
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -86,6 +86,24 @@ CREATE TABLE gestao_imobiliario.categoria_imovel (
 
 
 ALTER TABLE gestao_imobiliario.categoria_imovel OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 16450)
+-- Name: cliente_usuario; Type: TABLE; Schema: gestao_imobiliario; Owner: postgres
+--
+
+CREATE TABLE gestao_imobiliario.cliente_usuario (
+    cpf character varying(14)[] NOT NULL,
+    nome_cliente_usuario character varying(50)[] NOT NULL,
+    endereco_cliente_usuario character varying(100)[] NOT NULL,
+    telefone_cliente_usuario character varying(12) NOT NULL,
+    sexo_cliente_usuario "char" NOT NULL,
+    "estado_civil_cliente_usuario " character varying(12) NOT NULL,
+    profissao_cliente_usuario character varying(30)
+);
+
+
+ALTER TABLE gestao_imobiliario.cliente_usuario OWNER TO postgres;
 
 --
 -- TOC entry 204 (class 1259 OID 16408)
@@ -169,7 +187,7 @@ CREATE TABLE gestao_imobiliario.venda_imovel (
 ALTER TABLE gestao_imobiliario.venda_imovel OWNER TO postgres;
 
 --
--- TOC entry 3034 (class 0 OID 16429)
+-- TOC entry 3041 (class 0 OID 16429)
 -- Dependencies: 207
 -- Data for Name: apartamento; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
 --
@@ -179,7 +197,7 @@ COPY gestao_imobiliario.apartamento (id_apartamento, qtde_quartos_ap, qtde_suite
 
 
 --
--- TOC entry 3033 (class 0 OID 16421)
+-- TOC entry 3040 (class 0 OID 16421)
 -- Dependencies: 206
 -- Data for Name: casa; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
 --
@@ -189,7 +207,7 @@ COPY gestao_imobiliario.casa (id_casa, qtde_quartos_casa, qtde_suites_casa, qtde
 
 
 --
--- TOC entry 3030 (class 0 OID 16403)
+-- TOC entry 3037 (class 0 OID 16403)
 -- Dependencies: 203
 -- Data for Name: categoria_imovel; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
 --
@@ -199,7 +217,17 @@ COPY gestao_imobiliario.categoria_imovel (id_categoria) FROM stdin;
 
 
 --
--- TOC entry 3031 (class 0 OID 16408)
+-- TOC entry 3044 (class 0 OID 16450)
+-- Dependencies: 210
+-- Data for Name: cliente_usuario; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
+--
+
+COPY gestao_imobiliario.cliente_usuario (cpf, nome_cliente_usuario, endereco_cliente_usuario, telefone_cliente_usuario, sexo_cliente_usuario, "estado_civil_cliente_usuario ", profissao_cliente_usuario) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3038 (class 0 OID 16408)
 -- Dependencies: 204
 -- Data for Name: endereco_imovel; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
 --
@@ -209,7 +237,7 @@ COPY gestao_imobiliario.endereco_imovel (id_endereco_imovel, id_imovel, cep_imov
 
 
 --
--- TOC entry 3029 (class 0 OID 16395)
+-- TOC entry 3036 (class 0 OID 16395)
 -- Dependencies: 202
 -- Data for Name: imovel; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
 --
@@ -219,7 +247,7 @@ COPY gestao_imobiliario.imovel (id_imovel, status_imovel, imagem_imovel, data_co
 
 
 --
--- TOC entry 3035 (class 0 OID 16437)
+-- TOC entry 3042 (class 0 OID 16437)
 -- Dependencies: 208
 -- Data for Name: sala_comercial; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
 --
@@ -229,7 +257,7 @@ COPY gestao_imobiliario.sala_comercial (id_sala_comercial, area_sala_comercial, 
 
 
 --
--- TOC entry 3036 (class 0 OID 16442)
+-- TOC entry 3043 (class 0 OID 16442)
 -- Dependencies: 209
 -- Data for Name: terreno; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
 --
@@ -239,7 +267,7 @@ COPY gestao_imobiliario.terreno (id_terreno, area_terreno, largura_terreno, comp
 
 
 --
--- TOC entry 3032 (class 0 OID 16416)
+-- TOC entry 3039 (class 0 OID 16416)
 -- Dependencies: 205
 -- Data for Name: venda_imovel; Type: TABLE DATA; Schema: gestao_imobiliario; Owner: postgres
 --
@@ -249,7 +277,7 @@ COPY gestao_imobiliario.venda_imovel (id_op_venda_imovel, preco_sugerido, valor_
 
 
 --
--- TOC entry 2894 (class 2606 OID 16436)
+-- TOC entry 2899 (class 2606 OID 16436)
 -- Name: apartamento apartamento_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
 --
 
@@ -258,7 +286,7 @@ ALTER TABLE ONLY gestao_imobiliario.apartamento
 
 
 --
--- TOC entry 2892 (class 2606 OID 16428)
+-- TOC entry 2897 (class 2606 OID 16428)
 -- Name: casa casa_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
 --
 
@@ -267,7 +295,7 @@ ALTER TABLE ONLY gestao_imobiliario.casa
 
 
 --
--- TOC entry 2886 (class 2606 OID 16407)
+-- TOC entry 2891 (class 2606 OID 16407)
 -- Name: categoria_imovel categoria_imovel_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
 --
 
@@ -276,7 +304,16 @@ ALTER TABLE ONLY gestao_imobiliario.categoria_imovel
 
 
 --
--- TOC entry 2888 (class 2606 OID 16415)
+-- TOC entry 2905 (class 2606 OID 16457)
+-- Name: cliente_usuario cliente_usuario_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
+--
+
+ALTER TABLE ONLY gestao_imobiliario.cliente_usuario
+    ADD CONSTRAINT cliente_usuario_pkey PRIMARY KEY (cpf);
+
+
+--
+-- TOC entry 2893 (class 2606 OID 16415)
 -- Name: endereco_imovel endereco_imovel_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
 --
 
@@ -285,7 +322,7 @@ ALTER TABLE ONLY gestao_imobiliario.endereco_imovel
 
 
 --
--- TOC entry 2884 (class 2606 OID 16402)
+-- TOC entry 2889 (class 2606 OID 16402)
 -- Name: imovel imovel_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
 --
 
@@ -294,7 +331,7 @@ ALTER TABLE ONLY gestao_imobiliario.imovel
 
 
 --
--- TOC entry 2896 (class 2606 OID 16441)
+-- TOC entry 2901 (class 2606 OID 16441)
 -- Name: sala_comercial sala_comercial_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
 --
 
@@ -303,7 +340,7 @@ ALTER TABLE ONLY gestao_imobiliario.sala_comercial
 
 
 --
--- TOC entry 2898 (class 2606 OID 16449)
+-- TOC entry 2903 (class 2606 OID 16449)
 -- Name: terreno terreno_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
 --
 
@@ -312,7 +349,7 @@ ALTER TABLE ONLY gestao_imobiliario.terreno
 
 
 --
--- TOC entry 2890 (class 2606 OID 16420)
+-- TOC entry 2895 (class 2606 OID 16420)
 -- Name: venda_imovel venda_imovel_pkey; Type: CONSTRAINT; Schema: gestao_imobiliario; Owner: postgres
 --
 
@@ -320,7 +357,7 @@ ALTER TABLE ONLY gestao_imobiliario.venda_imovel
     ADD CONSTRAINT venda_imovel_pkey PRIMARY KEY (id_op_venda_imovel);
 
 
--- Completed on 2021-08-26 17:36:29
+-- Completed on 2021-08-27 16:20:43
 
 --
 -- PostgreSQL database dump complete
